@@ -9,6 +9,10 @@ class BlogsController < ApplicationController
     @entries = @blog.entries
   end
 
+  def new
+    @blog = Blog.new
+  end
+
   private
 
   def set_blog
