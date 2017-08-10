@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show]
+  before_action :set_blog, only: [:show, :edit]
 
   def index
     @blogs = Blog.all
@@ -11,6 +11,9 @@ class BlogsController < ApplicationController
 
   def new
     @blog = Blog.new
+  end
+
+  def edit
   end
 
   private
