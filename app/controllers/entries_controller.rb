@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
-  before_action :set_blog, only: [:new]
+  before_action :set_blog, only: [:new, :edit]
 
   # GET /entries/1
   def show
