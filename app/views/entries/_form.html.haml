@@ -1,4 +1,4 @@
-= form_with(model: entry, local: true) do |form|
+= form_with(model: [blog, entry], local: true) do |form|
   - if entry.errors.any?
     #error_explanation
       %h2 #{pluralize(entry.errors.count, 'error')} prohibited this entry from being saved:
@@ -16,4 +16,4 @@
     = form.text_area :body, id: :entry_body
 
   .actions
-    = form.submit
+    = form.submit 'Save'
