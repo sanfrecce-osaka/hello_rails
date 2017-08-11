@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
-  before_action :set_blog, only: [:new, :edit, :create]
+  before_action :set_blog, only: [:new, :edit, :create, :update]
 
   # GET /entries/1
   def show
@@ -30,7 +30,7 @@ class EntriesController < ApplicationController
   # PATCH/PUT /entries/1
   def update
     if @entry.update(entry_params)
-      redirect_to @entry, notice: 'Entry was successfully updated.'
+      redirect_to [@blog, @entry], notice: 'Entry was successfully updated.'
     else
       render :edit
     end
