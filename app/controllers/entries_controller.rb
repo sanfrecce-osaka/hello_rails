@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
-  before_action :set_blog, only: [:new, :edit]
+  before_action :set_blog, only: [:new, :edit, :create]
 
   # GET /entries/1
   def show
@@ -18,9 +18,10 @@ class EntriesController < ApplicationController
   # POST /entries
   def create
     @entry = Entry.new(entry_params)
+    @entry.blog = @blog
 
     if @entry.save
-      redirect_to @entry, notice: 'Entry was successfully created.'
+      redirect_to [@blog, @entry], notice: 'Entry was successfully created.'
     else
       render :new
     end
