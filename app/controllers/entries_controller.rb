@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
-  before_action :set_blog, only: [:new, :edit, :create, :update]
+  before_action :set_blog
 
   # GET /entries/1
   def show
@@ -39,7 +39,7 @@ class EntriesController < ApplicationController
   # DELETE /entries/1
   def destroy
     @entry.destroy
-    redirect_to entries_url, notice: 'Entry was successfully destroyed.'
+    redirect_to @blog, notice: 'Entry was successfully destroyed.'
   end
 
   private
