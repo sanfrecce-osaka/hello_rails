@@ -1,32 +1,33 @@
-%p#notice= notice
+-if notice
+  %p#notice= notice
 
-%p
-  %strong Title:
-  = @blog.title
+#blog-data
+  %p
+    %b Title:
+    = @blog.title
 
-= link_to 'Edit', edit_blog_path(@blog)
-\|
-= link_to 'Back', blogs_path
+  = link_to 'Edit', [:edit, @blog]
+  \|
+  = link_to 'Back', :blogs
 
-%h1 Listing entries
+#entry-list
+  %h1 Listing entries
 
-%table
-  %thead
-    %tr
-      %th Title
-      %th Body
-      %th{ colspan: 3 }
+  %ul#list-header
+    %li Title
+    %li Body
 
-  %tbody
+  %ul#list-body
     - @entries.each do |entry|
-      %tr
-        %td= entry.title
-        %td= entry.body
-        %td= link_to 'Show', [@blog, entry]
-        %td= link_to 'Edit', edit_blog_entry_path(entry)
-        %td= link_to 'Destroy', [@blog, entry], method: :delete, data: { confirm: 'Are you sure?' }
+      %li.line
+        %ul.entry-data
+          %li= entry.title
+          %li= entry.body
 
-%br
+        %ul.actions
+          %li= link_to 'Show', [@blog, entry]
+          %li= link_to 'Edit', [:edit, @blog, entry]
+          %li= link_to 'Destroy', [@blog, entry], method: :delete, data: { confirm: 'Are you sure?' }
 
-= link_to 'New Entry', new_blog_entry_path(@blog)
+= link_to 'New Entry', [:new, @blog, :entry]
 
