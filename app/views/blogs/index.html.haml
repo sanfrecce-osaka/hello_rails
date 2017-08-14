@@ -1,21 +1,21 @@
-%p#notice= notice
+- if notice
+  %p#notice= notice
 
-%h1 Listing Blogs
+#blog-list
+  %h1 Listing Blogs
 
-%table
-  %thead
-    %tr
-      %th Title
-      %th{ colspan: '3' }
+  %ul#list-header
+    %li Title
 
-  %tbody
+  %ul#list-body
     - @blogs.each do |blog|
-      %tr
-        %td= blog.title
-        %td= link_to 'Show', blog
-        %td= link_to 'Edit', edit_blog_path(blog)
-        %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
+      %li.line
+        %ul.blog-data
+          %li= blog.title
 
-%br
+        %ul.actions
+          %li= link_to 'Show', blog
+          %li= link_to 'Edit', [:edit, blog]
+          %li= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
 
-= link_to 'New Entry', new_blog_path
+= link_to 'New Entry', [:new, :blog]
