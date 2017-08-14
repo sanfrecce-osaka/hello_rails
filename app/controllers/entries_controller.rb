@@ -5,6 +5,7 @@ class EntriesController < ApplicationController
   # GET /entries/1
   def show
     @comments = @entry.comments
+    @comment = Comment.new
   end
 
   # GET /entries/new

@@ -30,3 +30,9 @@
         %td= approved_comment?(comment) ? comment.body : '(承認待ち)'
         %td= approved_comment?(comment) ? '' : link_to('Approve', '#')
         %td= link_to 'Destroy', '#'
+
+%br
+
+%h2 New comment
+
+= render 'comments/form', blog: @blog, entry: @entry, comment: @comment
