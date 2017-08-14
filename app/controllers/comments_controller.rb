@@ -14,6 +14,11 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment.destroy
+    redirect_to [@blog, @entry], notice: 'Comment was successfully destroyed.'
+  end
+
   def approve
     if @comment.update(status: 'approved')
       redirect_to [@blog, @entry]
