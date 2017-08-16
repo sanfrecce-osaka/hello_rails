@@ -1,13 +1,36 @@
 %p#notice= notice
 
-%p
-  %strong Title:
-  = @entry.title
+%blog-data
+  %h1= @blog.title
 
-%p
-  %strong Body:
-  = @entry.body
+  %p
+    %b Title:
+    = @entry.title
 
-= link_to 'Edit', edit_entry_path(@entry)
-\|
-= link_to 'Back', entries_path
+  %p
+    %b Body:
+    = @entry.body
+
+  = link_to 'Edit', [:edit, @blog, @entry]
+  \|
+  = link_to 'Back', @blog
+
+#comment-list
+  %h2 Listing Comments
+
+  %ul#list-header
+    %li Body
+
+  %ul#list-body
+    - @comments.each do |comment|
+      %li.line
+        %ul.comment-data
+          %li= approved_comment?(comment) ? comment.body : '(承認待ち)'
+
+        %ul.actions
+          %li= approved_comment?(comment) ? '' : link_to('Approve', approve_blog_entry_comment_path(@blog, @entry, comment), method: :patch)
+          %li= link_to 'Destroy', [@blog, @entry, comment], method: :delete, data: { confirm: 'Are you sure?' }
+
+%h2 New comment
+
+= render 'comments/form', blog: @blog, entry: @entry, comment: @comment

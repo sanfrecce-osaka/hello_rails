@@ -1,16 +1,28 @@
+$base-font-color: #a6523f;
+$link-color: #63a839;
+
 body {
   background-color: #fff;
-  color: #333;
-  margin: 33px;
+  color: $base-font-color;
+  min-width: 400px;
+  margin: 10px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+}
+
+h1, h2 {
+  font-size: 20px;
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+}
+
+li {
+  list-style: none;
 }
 
 pre {
@@ -20,15 +32,15 @@ pre {
 }
 
 a {
-  color: #000;
+  color: $link-color;
+  text-decoration: none;
 
   &:visited {
-    color: #666;
+    color: darken($link-color, 20%);
   }
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: darken($link-color, 20%);
   }
 }
 
@@ -48,6 +60,20 @@ div {
 
 #notice {
   color: green;
+}
+
+#blog-data {
+  padding-bottom: 20px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid lightgray;
+
+  p {
+    font-size: 14px;
+  }
+
+  p:last-child {
+    margin-bottom: 10px;
+  }
 }
 
 .field_with_errors {
@@ -81,4 +107,31 @@ div {
 
 label {
   display: block;
+  font-weight: bold;
+}
+
+input[type="submit"] {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: lightgray;
+  box-shadow: 0;
+}
+
+input[type="text"] {
+  width: 90%;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+textarea {
+  width: 90%;
+  height: 60px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+footer {
+  padding: 5px;
+  margin-top: 20px;
+  text-align: center;
 }

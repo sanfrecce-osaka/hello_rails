@@ -1,0 +1,21 @@
+- if notice
+  %p#notice= notice
+
+#blog-list
+  %h1 Listing Blogs
+
+  %ul#list-header
+    %li Title
+
+  %ul#list-body
+    - @blogs.each do |blog|
+      %li.line
+        %ul.blog-data
+          %li= blog.title
+
+        %ul.actions
+          %li= link_to 'Show', blog
+          %li= link_to 'Edit', [:edit, blog]
+          %li= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'New Entry', [:new, :blog]

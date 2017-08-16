@@ -1,0 +1,33 @@
+-if notice
+  %p#notice= notice
+
+#blog-data
+  %p
+    %b Title:
+    = @blog.title
+
+  = link_to 'Edit', [:edit, @blog]
+  \|
+  = link_to 'Back', :blogs
+
+#entry-list
+  %h1 Listing entries
+
+  %ul#list-header
+    %li Title
+    %li Body
+
+  %ul#list-body
+    - @entries.each do |entry|
+      %li.line
+        %ul.entry-data
+          %li= entry.title
+          %li= entry.body
+
+        %ul.actions
+          %li= link_to 'Show', [@blog, entry]
+          %li= link_to 'Edit', [:edit, @blog, entry]
+          %li= link_to 'Destroy', [@blog, entry], method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'New Entry', [:new, @blog, :entry]
+
