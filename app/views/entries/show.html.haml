@@ -1,37 +1,35 @@
 %p#notice= notice
 
-%h1= @blog.title
+%blog-data
+  %h1= @blog.title
 
-%p
-  %strong Title:
-  = @entry.title
+  %p
+    %b Title:
+    = @entry.title
 
-%p
-  %strong Body:
-  = @entry.body
+  %p
+    %b Body:
+    = @entry.body
 
-= link_to 'Edit', [:edit, @blog, @entry]
-\|
-= link_to 'Back', @blog
+  = link_to 'Edit', [:edit, @blog, @entry]
+  \|
+  = link_to 'Back', @blog
 
-%br
+#comment-list
+  %h2 Listing Comments
 
-%h2 Listing Comments
+  %ul#list-header
+    %li Body
 
-%table
-  %thead
-    %tr
-      %th Body
-      %th{colspan: 2}
-
-  %tbody
+  %ul#list-body
     - @comments.each do |comment|
-      %tr
-        %td= approved_comment?(comment) ? comment.body : '(承認待ち)'
-        %td= approved_comment?(comment) ? '' : link_to('Approve', approve_blog_entry_comment_path(@blog, @entry, comment), method: :patch)
-        %td= link_to 'Destroy', [@blog, @entry, comment], method: :delete, data: { confirm: 'Are you sure?' }
+      %li.line
+        %ul.comment-data
+          %li= approved_comment?(comment) ? comment.body : '(承認待ち)'
 
-%br
+        %ul.actions
+          %li= approved_comment?(comment) ? '' : link_to('Approve', approve_blog_entry_comment_path(@blog, @entry, comment), method: :patch)
+          %li= link_to 'Destroy', [@blog, @entry, comment], method: :delete, data: { confirm: 'Are you sure?' }
 
 %h2 New comment
 
