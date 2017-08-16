@@ -1,3 +1,56 @@
-// Place all the styles related to the Entries controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#comment-list {
+  margin-bottom: 50px;
+
+  h1 {
+    padding: 5px 0 10px;
+    margin: 0;
+    border-bottom: 1px solid lightgray;
+  }
+
+  ul#list-header {
+    display: flex;
+    width: 50%;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 5px;
+      font-weight: bold;
+    }
+  }
+
+  ul#list-body {
+    padding: 0;
+    margin: 0;
+
+    li.line {
+      display: flex;
+      padding: 5px 0;
+      border-top: 1px solid lightgray;
+
+      ul.comment-data, ul.actions {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul.comment-data {
+        display: flex;
+        width: 40%;
+
+        li {
+          padding: 0 5px;
+        }
+      }
+
+      ul.actions {
+        display: flex;
+        width: 60%;
+
+        li {
+          width: 25%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
