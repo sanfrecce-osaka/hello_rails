@@ -1,0 +1,13 @@
+- blog = @params[:blog]
+- entry = @params[:entry]
+- comment = @params[:comment]
+
+新しいコメントが登録されました。
+\
+承認または削除してください。
+\
+= "Blog: #{blog.title}"
+= "Entry: #{entry.title}"
+= "Comment: #{comment.body}"
+\
+= "URL: #{blog_entry_url(blog, entry)}"

@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @comment.entry = @entry
 
     if @comment.save
+      NoticeMailer.notify_posting_comment(blog: @blog, entry: @entry, comment: @comment).deliver
       redirect_to [@blog, @entry], notice: 'Comment was successfully created.'
     else
       render 'entries/show'
